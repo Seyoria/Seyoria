@@ -12,10 +12,5 @@
 ```javascript
 const me = {
   role:     "Developer & System Administrator",
-  passions: [
-    "Discord Bot Architecture",
-    "Minecraft Systems (Skript)",
-    "Desktop UI Customization",
-    "Cyber Security (OSINT)"
-  ]
+  passions: ["Discord Bot Dev", "Minecraft Systems (Skript)", "Desktop UI Customization"]
 };
