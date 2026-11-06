@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Seyoria: kodluyorum, üretiyorum, paylaşıyorum.">
+<meta name="theme-color" content="#050505">
+<meta property="og:title" content="Seyoria">
+<link rel="icon" type="image/png" href="favicon.png"><link rel="apple-touch-icon" href="favicon.png">
+<title>Seyoria</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+:root{color-scheme:dark;--bg:#050505;--ink:#f4f4f2;--dim:#9a9a96;--glass:rgba(255,255,255,.055);--glass2:rgba(255,255,255,.09);--edge:rgba(255,255,255,.14);
+--serif:'Cormorant Garamond',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif;--st:#8a8a86;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--sans)}
+.orbs{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.orbs i{position:absolute;border-radius:50%;background:#fff;filter:blur(110px);opacity:.14;animation:float 30s ease-in-out infinite alternate}
+.orbs i:nth-child(1){width:46vmax;height:46vmax;left:-14vmax;top:-14vmax}
+.orbs i:nth-child(2){width:34vmax;height:34vmax;right:-8vmax;top:30vh;opacity:.1;animation-duration:38s}
+.orbs i:nth-child(3){width:40vmax;height:40vmax;left:30vw;bottom:-24vmax;opacity:.12;animation-duration:44s}
+@keyframes float{to{transform:translate(7vmax,-5vmax) scale(1.2)}}
+main{max-width:1060px;margin:0 auto;padding:40px 20px 30px;display:grid;gap:14px;grid-template-columns:repeat(12,1fr)}
+.card{position:relative;overflow:hidden;background:var(--glass);border:1px solid var(--edge);border-radius:26px;padding:24px;backdrop-filter:blur(24px) saturate(1.4);-webkit-backdrop-filter:blur(24px) saturate(1.4);box-shadow:inset 0 1px 0 rgba(255,255,255,.12);transition:transform .25s ease-out;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.12),transparent 60%)}
+.card:hover::after{opacity:1}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}}
+h2{font:italic 600 30px/1.1 var(--serif);margin:0 0 16px}
+svg.i{width:20px;height:20px;flex:none}
+.banner{grid-column:1/-1;display:grid;place-items:center;padding:30px 20px;min-height:190px}
+.banner img{width:min(420px,78%);height:auto;filter:drop-shadow(0 0 28px rgba(255,255,255,.22));animation:reveal 1.8s ease-out both}
+@keyframes reveal{from{opacity:0;filter:blur(14px)}}
+.me>*{position:relative;z-index:1}.me .art{position:absolute;inset:0;z-index:0;pointer-events:none}.art::before{content:"";position:absolute;top:0;bottom:0;right:0;width:80%;background:linear-gradient(270deg,#000 0%,rgba(0,0,0,.93) 30%,rgba(0,0,0,.55) 62%,transparent 100%)}.art img{position:absolute;right:7%;top:50%;transform:translateY(-50%);width:36%;height:auto;filter:drop-shadow(0 0 24px rgba(255,255,255,.2))}
+.me>div:first-child{max-width:62%}@media (max-width:900px){.me>div:first-child{max-width:none}.me .art{display:none}}
+.wm{font:italic 500 clamp(64px,13vw,128px)/1 var(--serif);letter-spacing:.02em;text-shadow:0 0 40px rgba(255,255,255,.3);animation:breathe 7s ease-in-out infinite}
+@keyframes breathe{50%{text-shadow:0 0 70px rgba(255,255,255,.55)}}
+.me{grid-column:1/9;grid-row:2/4;min-height:360px;display:flex;flex-direction:column;justify-content:space-between;padding:34px}
+.av{position:relative;width:124px;height:124px;flex:none}
+.avatar{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;overflow:hidden;font:italic 500 48px var(--serif);background:var(--glass2);box-shadow:0 0 0 2px var(--st),0 0 0 8px rgba(255,255,255,.05),0 10px 40px rgba(255,255,255,.1);transition:box-shadow .5s}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.deco{position:absolute;inset:-12%;width:124%;height:124%;pointer-events:none}
+.dot{position:absolute;right:2px;bottom:2px;width:24px;height:24px;border-radius:50%;background:var(--st);border:4px solid #111;transition:background .5s}
+.nameRow{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:26px 0 6px}
+.me h1{font:italic 500 clamp(56px,9vw,100px)/.9 var(--serif);margin:0;text-shadow:0 0 40px rgba(255,255,255,.25)}
+.nitro h1{background:linear-gradient(100deg,#fff 20%,#ff9bd2 45%,#9bb7ff 70%,#fff);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:-200% 0}}
+.badges{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.bd{position:relative;width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:18px;background:color-mix(in srgb,var(--c) 22%,transparent);border:1px solid color-mix(in srgb,var(--c) 55%,transparent);cursor:default;transition:transform .2s;animation:pop .5s backwards}
+.bd:hover{transform:translateY(-3px) scale(1.1)}
+.bd.nt{background:linear-gradient(135deg,#ff7ac6,#7a8bff);border-color:rgba(255,255,255,.5);box-shadow:0 0 18px rgba(150,130,255,.6)}
+@keyframes pop{from{transform:scale(0)}}
+.pill{display:flex;gap:8px;align-items:center;padding:5px 10px;border-radius:12px;background:rgba(0,0,0,.45);border:1px solid var(--edge)}
+.pill img{width:22px;height:22px;object-fit:contain;transition:transform .2s}.pill img:hover{transform:scale(1.25)}
+.chip{display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid var(--edge);font:600 14px var(--sans)}.chip img{width:16px;height:16px}
+.bd::after,.tile::after{content:attr(data-n);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translate(-50%,4px);padding:5px 10px;border-radius:9px;background:rgba(15,15,15,.95);border:1px solid var(--edge);font:500 12px var(--sans);white-space:nowrap;opacity:0;pointer-events:none;transition:.2s;z-index:3}
+.bd:hover::after,.tile:hover::after{opacity:1;transform:translate(-50%,0)}
+.me p{margin:0;color:#cfcfcb;font:italic 500 24px/1.25 var(--serif);max-width:30ch;min-height:2.5em}
+#bio.typing::after{content:'';display:inline-block;width:2px;height:1em;background:var(--ink);margin-left:3px;vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;color:var(--dim);font-size:13px}
+.meta span{padding:4px 11px;border-radius:99px;background:var(--glass);border:1px solid var(--edge)}
+.socials{display:flex;gap:10px;margin-top:22px}
+.socials a{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:var(--ink);background:var(--glass2);border:1px solid var(--edge);transition:background .2s,transform .2s}
+.socials a:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+.clock{grid-column:9/13;grid-row:2;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.clock b{font:500 62px/1 var(--serif);font-variant-numeric:tabular-nums}
+.clock span{color:var(--dim);font-size:14px;margin-top:10px}
+.pres{grid-column:9/13;grid-row:3;display:flex;flex-direction:column;gap:12px;background:linear-gradient(120deg,rgba(255,255,255,.07),rgba(255,255,255,.03))}
+.st{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500}
+.sdot{width:9px;height:9px;border-radius:50%;background:var(--st);box-shadow:0 0 10px var(--st)}
+.cs{display:flex;align-items:center;gap:8px;color:#d9d9d5;font-size:15px;min-height:24px}
+.cs img{width:22px;height:22px;object-fit:contain}
+.act{display:flex;gap:12px;align-items:center;padding:10px;border-radius:16px;background:var(--glass2)}
+.act img{width:56px;height:56px;border-radius:12px;object-fit:cover;flex:none}
+.act div{min-width:0;flex:1}.act b,.act small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.act small{color:var(--dim);font-size:13px}
+.bar{height:4px;border-radius:4px;background:rgba(255,255,255,.14);margin-top:7px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:#1ed760}
+.skills{grid-column:1/8}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:10px}
+.tile{position:relative;aspect-ratio:1;border-radius:18px;background:var(--glass2);border:1px solid var(--edge);display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s}
+.tile:hover{transform:translateY(-3px);background:rgba(255,255,255,.16)}.tile svg{width:36px;height:36px}
+.links{grid-column:8/13}
+.emo{grid-column:1/-1}
+.ewall{display:flex;flex-wrap:wrap;gap:10px}
+.e{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:30px;background:var(--glass2);border:1px solid var(--edge);cursor:pointer;transition:transform .2s;user-select:none}
+.e:hover{transform:translateY(-4px) rotate(-6deg) scale(1.12)}.e img{width:34px;height:34px}
+.gh{grid-column:1/-1}.gh #repos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px}.gh .row{margin:0}
+.row{display:flex;align-items:center;gap:14px;padding:12px 14px;margin-bottom:8px;border-radius:16px;background:var(--glass);border:1px solid transparent;color:inherit;text-decoration:none;transition:background .2s,border-color .2s}
+.row:last-child{margin-bottom:0}a.row:hover{background:var(--glass2);border-color:var(--edge)}
+a.row:focus-visible,.socials a:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.row .ic{width:38px;height:38px;border-radius:11px;background:var(--glass2);display:grid;place-items:center;flex:none}
+.row div{flex:1;min-width:0}.row span{display:block;font-weight:500}.row small{color:var(--dim);font-size:13px}.row .go{opacity:.5;width:16px;height:16px}
+.marquee{overflow:hidden;max-width:1060px;margin:0 auto;padding:6px 0 34px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.mq{display:flex;width:max-content;animation:mq 46s linear infinite;font:italic 500 clamp(44px,7vw,92px)/1.1 var(--serif);color:transparent;-webkit-text-stroke:1px rgba(244,244,242,.34);white-space:nowrap}
+.mq span{padding-right:.5em}@keyframes mq{to{transform:translateX(-50%)}}
+.foot{text-align:center;color:var(--dim);font-size:13px;padding:0 20px 40px}
+.glow{position:fixed;left:0;top:0;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.1),transparent 65%);pointer-events:none;z-index:-1;transition:transform .18s ease-out}
+#dust{position:fixed;inset:0;z-index:5;pointer-events:none}
+.toast{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);padding:11px 18px;border-radius:14px;background:rgba(20,20,20,.88);border:1px solid var(--edge);backdrop-filter:blur(16px);opacity:0;pointer-events:none;transition:.3s;font-size:14px;z-index:9}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.snowbtn{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:var(--ink);background:rgba(20,20,20,.7);border:1px solid var(--edge);backdrop-filter:blur(14px);cursor:pointer;z-index:9}
+.snowbtn[aria-pressed=false]{opacity:.45}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){.mq,.wm,.orbs i,.card,.nitro h1,.bd{animation:none!important}}
+@media (max-width:900px){main>*{grid-column:1/-1!important;grid-row:auto!important}.me{min-height:0}}
+</style>
+</head>
+<body>
+<div class="glow" id="glow"></div><canvas id="dust" aria-hidden="true"></canvas><div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
+<main>
+  <section class="card banner"><div class="wm" id="wm">Seyoria</div></section>
+  <section class="card me" id="meCard">
+    <div class="art" aria-hidden="true"><img src="momus-art.png" alt=""></div>
+    <div>
+      <div class="av"><div class="avatar" id="avatar"></div><img class="deco" id="deco" alt="" hidden><span class="dot" id="dot"></span></div>
+      <div class="nameRow"><h1 id="name"></h1><div class="badges" id="badges"></div></div>
+      <p id="bio"></p>
+      <div class="meta" id="meta"></div>
+    </div>
+    <div class="socials" id="socials"></div>
+  </section>
+  <section class="card clock"><b id="time">--:--:--</b><span id="city"></span><span id="date"></span></section>
+  <section class="card pres">
+    <div class="st"><i class="sdot"></i><span id="dstatus">Bağlanıyor…</span></div>
+    <div class="cs" id="cs"></div>
+    <div class="act" id="act" hidden><img id="actImg" alt=""><div><b id="actT"></b><small id="actS"></small><div class="bar" id="actBar" hidden><i id="actFill"></i></div></div></div>
+  </section>
+  <section class="card skills"><h2>Yetenekler</h2><div class="tiles" id="skills"></div></section>
+  <section class="card links"><h2>Bağlantılar</h2><div id="links"></div></section>
+  <section class="card emo"><h2>Emojiler</h2><div class="ewall" id="ewall"></div></section>
+  <section class="card gh" id="gh" hidden><h2>GitHub’da son işler</h2><div id="repos"></div></section>
+</main>
+<div class="marquee" aria-hidden="true"><div class="mq" id="mq"></div></div>
+<footer class="foot">© 2026 Seyoria</footer>
+<div class="toast" id="toast"></div>
+<button class="snowbtn" id="snowbtn" aria-label="Karı aç veya kapat" aria-pressed="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7M9 4l3 2 3-2M9 20l3-2 3 2"/></svg></button>
+<script>
+/* ================= BURAYI KENDİNE GÖRE DÜZENLE ================= */
+const ASSETS = {
+  banner: "banner.png",      // Banner görselin (data: URI ya da dosya yolu). Boşsa yazı logosu çıkar.
+  avatar: "avatar.jpg"     // Yedek avatar. Canlı Discord avatarı gelince onun yerine geçer.
+};
+const ME = {
+  name: "Seyoria",
+  bio: "kodluyorum, üretiyorum, paylaşıyorum.",
+  city: "TR", timezone: "Europe/Istanbul",
+  discordId: "1418943869554266122",
+  discordName: "seyoria_0",
+  /* Profildeki sunucu etiketi kutusu (ör. CMS). icon: etiket görselinin adresi */
+  serverTag: {tag:"CMS", icon:""},
+  /* Profilindeki GERÇEK rozetler: Discord’da rozete sağ tık → “Resim adresini kopyala”, adresleri sırayla yapıştır.
+     Boş bırakırsan emoji rozetler çıkar. Örnek: [{n:"Quest", src:"https://cdn.discordapp.com/badge-icons/XXXX.png"}] */
+  badgeImages: [],
+  nitro: "auto",   // "auto" = animasyonlu avatar / avatar süsü / banner varsa Nitro say. true = her zaman göster. false = gizle.
+  /* Emoji duvarı: unicode yaz ya da Nitro/sunucu emojisi için {id:"EMOJİ_ID", animated:true} */
+  emojis: ["🗡️","🖤","✨","🌙","⚔️","💻","🔥","👁️"],
+  skills: [["js","JavaScript"],["node","Node.js"],["html","HTML5"],["css","CSS3"],["git","Git"],["github","GitHub"],["bot","Discord bot"]],
+  links: [
+    {type:"discord", title:"Discord", note:"seyoria_0", url:"https://discord.com/users/1418943869554266122"},
+    {type:"github", title:"GitHub", note:"github.com/Seyoria", url:"https://github.com/Seyoria"},
+    {type:"globe", title:"Momus", note:"seyoria.github.io/momus", url:"https://seyoria.github.io/momus/"},
+    {type:"youtube", title:"YouTube", note:"@Seyoria", url:"https://www.youtube.com/@Seyoria"},
+    {type:"mail", title:"E-posta", note:"momusbio@gmail.com", url:"mailto:momusbio@gmail.com"}
+  ]
+};
+/* Discord rozetleri: [bit, ad, emoji, renk] */
+const BADGES=[[0,"Discord Personeli","🛡️","#5865f2"],[1,"Discord Partneri","🤝","#5865f2"],[2,"HypeSquad Events","🎉","#f9a62b"],[3,"Bug Avcısı","🐛","#3ba55d"],[6,"HypeSquad Bravery","🦁","#9b84ee"],[7,"HypeSquad Brilliance","🧠","#f47b67"],[8,"HypeSquad Balance","⚖️","#45ddc0"],[9,"Erken Destekçi","🌟","#7289da"],[14,"Altın Bug Avcısı","🐞","#fbb848"],[17,"Doğrulanmış Bot Geliştirici","🤖","#5865f2"],[18,"Sertifikalı Moderatör","🔰","#5865f2"],[22,"Aktif Geliştirici","⚡","#3ba55d"]];
+/* ============================================================== */
+const S='class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
+const ICON={
+github:'<svg class="i" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>',
+discord:`<svg ${S}><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/><circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="15" cy="12" r="1" fill="currentColor"/></svg>`,
+youtube:`<svg ${S}><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="m10 9.5 5 2.5-5 2.5z" fill="currentColor"/></svg>`,
+mail:`<svg ${S}><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>`,
+go:`<svg class="i go" ${S.replace('class="i" ','')}><path d="M7 17 17 7M8 7h9v9"/></svg>`,
+globe:`<svg ${S}><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3.2 3 3.2 15 0 18M12 3c-3.2 3-3.2 15 0 18"/></svg>`};
+const LOGO={
+js:'<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="3" fill="#f7df1e"/><text x="22" y="21" text-anchor="end" font-family="Arial,sans-serif" font-weight="800" font-size="12" fill="#111">JS</text></svg>',
+node:'<svg viewBox="0 0 24 24"><path d="M12 2 21 7v10l-9 5-9-5V7z" fill="rgba(108,194,74,.15)" stroke="#6cc24a" stroke-width="1.6" stroke-linejoin="round"/><text x="12" y="15.2" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="8" fill="#6cc24a">JS</text></svg>',
+html:'<svg viewBox="0 0 24 24"><path d="M3 2h18l-1.6 18L12 22l-7.4-2z" fill="#e44d26"/><path d="M12 20.4l6-1.7L19.2 4H12z" fill="#f16529"/><text x="12" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" fill="#fff">5</text></svg>',
+css:'<svg viewBox="0 0 24 24"><path d="M3 2h18l-1.6 18L12 22l-7.4-2z" fill="#1572b6"/><path d="M12 20.4l6-1.7L19.2 4H12z" fill="#33a9dc"/><text x="12" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" fill="#fff">3</text></svg>',
+git:'<svg viewBox="0 0 24 24"><rect x="4.2" y="4.2" width="15.6" height="15.6" rx="2.6" transform="rotate(45 12 12)" fill="#f05032"/><path d="M9.5 8.8v6.4M9.5 12h5" stroke="#fff" stroke-width="1.6" fill="none"/><circle cx="9.5" cy="8.3" r="1.7" fill="#fff"/><circle cx="9.5" cy="15.7" r="1.7" fill="#fff"/><circle cx="14.8" cy="12" r="1.7" fill="#fff"/></svg>',
+github:'<svg viewBox="0 0 16 16" fill="#f4f4f2"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>',
+bot:'<svg viewBox="0 0 24 24" fill="none" stroke="#8c9cff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/><circle cx="9" cy="12" r="1" fill="#8c9cff"/><circle cx="15" cy="12" r="1" fill="#8c9cff"/></svg>'};
+const $=id=>document.getElementById(id);
+const CDN="https://cdn.discordapp.com/";
+const ST={online:["Çevrimiçi","#23a55a"],idle:["Boşta","#f0b232"],dnd:["Rahatsız etmeyin","#f23f43"],offline:["Çevrimdışı","#80848e"]};
+const toast=m=>{const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove("on"),2000)};
+const emojiEl=(e,sz)=>{if(!e)return"";if(e.id){const a=e.animated;return `<img src="${CDN}emojis/${e.id}.${a?"gif":"webp"}?size=${sz||48}" alt="${e.name||""}">`}return `<span>${e.name||e}</span>`};
+
+/* ---- Statik kısım ---- */
+$("name").textContent=ME.name;$("bio").textContent=ME.bio;$("city").textContent=ME.city;
+if(ASSETS.banner){$("wm").outerHTML=`<img alt="${ME.name}" src="${ASSETS.banner}">`}
+function setAvatar(src){const el=$("avatar");el.textContent="";if(src){const im=new Image();im.alt="";im.onerror=()=>{el.textContent=ME.name[0]};im.src=src;el.appendChild(im)}else el.textContent=ME.name[0].toUpperCase()}
+setAvatar(ASSETS.avatar);
+ME.links.forEach(l=>{const a=document.createElement("a");a.href=l.url;a.target="_blank";a.rel="noopener";a.title=l.title;a.setAttribute("aria-label",l.title);a.innerHTML=ICON[l.type]||ICON.go;$("socials").appendChild(a);
+ const r=document.createElement("a");r.className="row";r.href=l.url;r.target="_blank";r.rel="noopener";r.innerHTML=`<span class="ic">${ICON[l.type]||ICON.go}</span><div><span></span><small></small></div>${ICON.go}`;r.querySelector("div span").textContent=l.title;r.querySelector("small").textContent=l.note;$("links").appendChild(r)});
+ME.skills.forEach(([k,n])=>{const t=document.createElement("div");t.className="tile";t.dataset.n=n;t.setAttribute("aria-label",n);t.innerHTML=LOGO[k]||"";$("skills").appendChild(t)});
+ME.emojis.forEach(e=>{const d=document.createElement("div");d.className="e";d.innerHTML=emojiEl(typeof e==="string"?{name:e}:e);d.onclick=()=>toast(typeof e==="string"?e:":"+(e.name||"emoji")+":");$("ewall").appendChild(d)});
+
+/* ---- Saat ---- */
+function tick(){const o={timeZone:ME.timezone},d=new Date();let t,ds="",hr;try{t=d.toLocaleTimeString("tr-TR",{...o,hour12:false});ds=d.toLocaleDateString("tr-TR",{...o,weekday:"long",day:"numeric",month:"long"});hr=+d.toLocaleTimeString("en-GB",{...o,hour:"2-digit",hour12:false}).slice(0,2)}catch(e){t=d.toLocaleTimeString("tr-TR",{hour12:false});hr=d.getHours()}
+$("time").textContent=t;const g=hr<5?"İyi geceler":hr<12?"Günaydın":hr<18?"İyi günler":hr<22?"İyi akşamlar":"İyi geceler";$("date").textContent=(ds?ds+" · ":"")+g}
+tick();setInterval(tick,1000);
+
+/* ---- Discord canlı veri (Lanyard) ---- */
+let prog=null;
+function render(d){
+  if(!d||!d.discord_user)return;const u=d.discord_user;
+  const [lbl,col]=ST[d.discord_status]||ST.offline;
+  document.documentElement.style.setProperty("--st",col);$("dstatus").textContent=lbl;
+  /* avatar + avatar süsü */
+  if(u.avatar){const an=u.avatar.startsWith("a_");setAvatar(`${CDN}avatars/${u.id}/${u.avatar}.${an?"gif":"png"}?size=256`)}
+  const dec=u.avatar_decoration_data&&u.avatar_decoration_data.asset;
+  $("deco").hidden=!dec;if(dec)$("deco").src=`${CDN}avatar-decoration-presets/${dec}.png?size=256`;
+  const dn=u.global_name||u.username;$("name").textContent=dn;
+  /* rozetler */
+  const fl=u.public_flags||0,bx=$("badges");bx.textContent="";
+  const nitro=ME.nitro===true||(ME.nitro==="auto"&&(u.avatar&&u.avatar.startsWith("a_")||dec||u.banner||u.premium_type>0));
+  const add=(n,e,c,cls)=>{const s=document.createElement("span");s.className="bd"+(cls?" "+cls:"");s.style.setProperty("--c",c);s.dataset.n=n;s.textContent=e;s.style.animationDelay=bx.children.length*70+"ms";bx.appendChild(s)};
+  const pg=u.primary_guild,tg=ME.serverTag||{};
+  const tag=(pg&&pg.tag)||tg.tag,ti=(pg&&pg.badge&&pg.identity_guild_id)?`${CDN}clan-badges/${pg.identity_guild_id}/${pg.badge}.png?size=32`:tg.icon;
+  if(tag){const c=document.createElement("span");c.className="chip";c.innerHTML=(ti?`<img src="${ti}" alt="">`:"")+"<span></span>";c.lastChild.textContent=tag;bx.appendChild(c)}
+  if(ME.badgeImages.length){const p=document.createElement("div");p.className="pill";ME.badgeImages.forEach(b=>{const i=new Image();i.src=b.src;i.alt=b.n||"";i.title=b.n||"";p.appendChild(i)});bx.appendChild(p)}
+  else BADGES.forEach(([b,n,e,c])=>{if(fl&(1<<b))add(n,e,c)});
+  $("meCard").classList.toggle("nitro",!!nitro);
+  /* meta */
+  const born=new Date(Number(BigInt(u.id)>>22n)+1420070400000),yrs=((Date.now()-born)/31557600000).toFixed(1).replace(".",",");
+  $("meta").innerHTML=`<span>@${u.username}</span><span>Discord’da ${yrs} yıl</span><span>Katılım: ${born.toLocaleDateString("tr-TR",{month:"long",year:"numeric"})}</span>`;
+  /* özel durum (Nitro emojisi destekli) */
+  const cs=(d.activities||[]).find(a=>a.type===4);
+  $("cs").innerHTML=cs?`${cs.emoji?emojiEl(cs.emoji,32):""}<span></span>`:"";if(cs)$("cs").lastChild.textContent=cs.state||"";
+  /* Spotify / oyun */
+  const act=$("act");clearInterval(prog);$("actBar").hidden=true;
+  if(d.listening_to_spotify&&d.spotify){const s=d.spotify;act.hidden=false;$("actImg").src=s.album_art_url||"";$("actT").textContent=s.song;$("actS").textContent=s.artist.replace(/;/g,",")+" · Spotify";$("actBar").hidden=false;
+    const f=()=>{const p=(Date.now()-s.timestamps.start)/(s.timestamps.end-s.timestamps.start);$("actFill").style.width=Math.min(100,Math.max(0,p*100))+"%"};f();prog=setInterval(f,1000)}
+  else{const g=(d.activities||[]).find(a=>a.type===0);if(g){act.hidden=false;$("actT").textContent=g.name;$("actS").textContent=[g.details,g.state].filter(Boolean).join(" · ")||"Oynuyor";
+    $("actImg").src=g.assets&&g.assets.large_image&&!g.assets.large_image.includes(":")?`${CDN}app-assets/${g.application_id}/${g.assets.large_image}.png`:"";}else act.hidden=true}
+}
+function live(){
+  if(!ME.discordId)return;
+  fetch("https://api.lanyard.rest/v1/users/"+ME.discordId).then(r=>r.json()).then(j=>j.data&&render(j.data)).catch(()=>{});
+  try{const ws=new WebSocket("wss://api.lanyard.rest/socket");let hb;
+   ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.op===1){ws.send(JSON.stringify({op:2,d:{subscribe_to_id:ME.discordId}}));hb=setInterval(()=>ws.readyState===1&&ws.send(JSON.stringify({op:3})),m.d.heartbeat_interval)}else if(m.op===0)render(m.d)};
+   ws.onclose=()=>{clearInterval(hb);setTimeout(live,8000)};ws.onerror=()=>ws.close()}catch(e){}
+}
+live();
+if(ME.nitro===true)render({discord_user:{id:ME.discordId,username:ME.discordName,public_flags:0},discord_status:"offline",activities:[]});
+$("dstatus").textContent="Bağlanıyor…";
+
+/* Discord’a tıklayınca kullanıcı adını kopyala */
+document.querySelectorAll('a[href*="discord.com/users"]').forEach(a=>a.addEventListener("click",e=>{e.preventDefault();const ok=()=>toast(ME.discordName+" kopyalandı");try{navigator.clipboard.writeText(ME.discordName).then(ok,()=>toast("Discord: "+ME.discordName))}catch(_){toast("Discord: "+ME.discordName)}}));
+
+/* GitHub son projeler */
+fetch("https://api.github.com/users/Seyoria/repos?sort=updated&per_page=8").then(r=>r.json()).then(list=>{
+ const rs=list.filter(r=>!r.fork).slice(0,3);if(!rs.length)return;
+ rs.forEach(r=>{const a=document.createElement("a");a.className="row";a.href=r.html_url;a.target="_blank";a.rel="noopener";a.innerHTML=`<span class="ic">${ICON.github}</span><div><span></span><small></small></div>${ICON.go}`;a.querySelector("span+span,div span").textContent=r.name;a.querySelector("small").textContent=(r.description||"")+(r.stargazers_count?" ★ "+r.stargazers_count:"");$("repos").appendChild(a)});
+ $("gh").hidden=false}).catch(()=>{});
+
+/* Kuyruklu kar + düğme */
+(()=>{const c=$("dust"),btn=$("snowbtn"),x=c.getContext("2d");let w=0,h=0,on=true;
+try{on=localStorage.getItem("snow")!=="off"}catch(e){}
+const set=v=>{on=v;btn.setAttribute("aria-pressed",v);try{localStorage.setItem("snow",v?"on":"off")}catch(e){}};set(on);btn.onclick=()=>set(!on);
+const P=[];for(let i=0;i<130;i++){const z=Math.random();P.push({x:Math.random()*1200,y:Math.random()*800,r:.8+z*2.4,v:.35+z*1,a:.35+z*.55,p:Math.random()*6.28,s:.3+Math.random()*.6})}
+const still=matchMedia("(prefers-reduced-motion:reduce)").matches;
+(function f(t){if(c.width!==innerWidth||c.height!==innerHeight){w=c.width=innerWidth;h=c.height=innerHeight}
+x.clearRect(0,0,w,h);if(on){for(const p of P){if(!still){p.y+=p.v;p.x+=Math.sin(t/1800*p.s+p.p)*.35+.1}if(p.y>h+6){p.y=-6;p.x=Math.random()*w}if(p.x>w+6)p.x=-6;x.globalAlpha=p.a;x.fillStyle="#fff";x.beginPath();x.arc(p.x,p.y,p.r,0,6.283);x.fill()}}
+requestAnimationFrame(f)})(0)})();
+
+/* İmleç ışığı + kart parlaması + hafif eğilme */
+addEventListener("pointermove",e=>{$("glow").style.transform="translate("+e.clientX+"px,"+e.clientY+"px)"});
+document.querySelectorAll(".card").forEach(c=>{c.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;c.style.setProperty("--mx",e.clientX-r.left+"px");c.style.setProperty("--my",e.clientY-r.top+"px");if(innerWidth>900&&r.height<420)c.style.transform=`perspective(900px) rotateX(${-py*4}deg) rotateY(${px*4}deg)`});c.addEventListener("pointerleave",()=>c.style.transform="")});
+
+/* Bio yazı efekti */
+(()=>{const el=$("bio"),t=ME.bio;if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;el.setAttribute("aria-label",t);el.textContent="";el.classList.add("typing");let i=0;
+setTimeout(function k(){el.textContent=t.slice(0,++i);if(i<t.length)setTimeout(k,55);else setTimeout(()=>el.classList.remove("typing"),1800)},1000)})();
+
+/* Kayan yazı şeridi */
+(()=>{const w=["kodluyorum","üretiyorum","paylaşıyorum"];let h="";for(let n=0;n<2;n++)for(let r=0;r<3;r++)w.forEach(x=>h+="<span>"+x+" ✦</span>");$("mq").innerHTML=h})();
+</script>
+</body>
+</html>
