@@ -32,8 +32,6 @@ svg.i{width:20px;height:20px;flex:none}
 .banner{grid-column:1/-1;display:grid;place-items:center;padding:30px 20px;min-height:190px}
 .banner img{width:min(420px,78%);height:auto;filter:drop-shadow(0 0 28px rgba(255,255,255,.22));animation:reveal 1.8s ease-out both}
 @keyframes reveal{from{opacity:0;filter:blur(14px)}}
-.me>*{position:relative;z-index:1}.me .art{position:absolute;inset:0;z-index:0;pointer-events:none}.art::before{content:"";position:absolute;top:0;bottom:0;right:0;width:80%;background:linear-gradient(270deg,#000 0%,rgba(0,0,0,.93) 30%,rgba(0,0,0,.55) 62%,transparent 100%)}.art img{position:absolute;right:7%;top:50%;transform:translateY(-50%);width:36%;height:auto;filter:drop-shadow(0 0 24px rgba(255,255,255,.2))}
-.me>div:first-child{max-width:62%}@media (max-width:900px){.me>div:first-child{max-width:none}.me .art{display:none}}
 .wm{font:italic 500 clamp(64px,13vw,128px)/1 var(--serif);letter-spacing:.02em;text-shadow:0 0 40px rgba(255,255,255,.3);animation:breathe 7s ease-in-out infinite}
 @keyframes breathe{50%{text-shadow:0 0 70px rgba(255,255,255,.55)}}
 .me{grid-column:1/9;grid-row:2/4;min-height:360px;display:flex;flex-direction:column;justify-content:space-between;padding:34px}
@@ -112,7 +110,6 @@ a.row:focus-visible,.socials a:focus-visible{outline:2px solid #fff;outline-offs
 <main>
   <section class="card banner"><div class="wm" id="wm">Seyoria</div></section>
   <section class="card me" id="meCard">
-    <div class="art" aria-hidden="true"><img src="momus-art.png" alt=""></div>
     <div>
       <div class="av"><div class="avatar" id="avatar"></div><img class="deco" id="deco" alt="" hidden><span class="dot" id="dot"></span></div>
       <div class="nameRow"><h1 id="name"></h1><div class="badges" id="badges"></div></div>
