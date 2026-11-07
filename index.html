@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600&display=swap">
 <style>
 :root{color-scheme:dark;--bg:#050505;--ink:#f4f4f2;--dim:#9a9a96;--glass:rgba(255,255,255,.055);--glass2:rgba(255,255,255,.09);--edge:rgba(255,255,255,.14);
---serif:'Cormorant Garamond',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif;--st:#8a8a86;
+--serif:'Cormorant Garamond',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif;--nameFont:var(--serif);--st:#8a8a86;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:inherit}
 html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
@@ -26,68 +26,73 @@ main{max-width:1060px;margin:0 auto;padding:40px 20px 30px;display:grid;gap:14px
 .card{position:relative;overflow:hidden;background:var(--glass);border:1px solid var(--edge);border-radius:26px;padding:24px;backdrop-filter:blur(24px) saturate(1.4);-webkit-backdrop-filter:blur(24px) saturate(1.4);box-shadow:inset 0 1px 0 rgba(255,255,255,.12);transition:transform .25s ease-out;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
 .card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.12),transparent 60%)}
 .card:hover::after{opacity:1}
+main>:nth-child(2){animation-delay:.5s}main>:nth-child(3){animation-delay:.7s}main>:nth-child(4){animation-delay:.9s}
 @keyframes rise{from{opacity:0;transform:translateY(16px)}}
 h2{font:italic 600 30px/1.1 var(--serif);margin:0 0 16px}
 svg.i{width:20px;height:20px;flex:none}
 .banner{grid-column:1/-1;display:grid;place-items:center;padding:30px 20px;min-height:190px}
 .banner img{width:min(420px,78%);height:auto;filter:drop-shadow(0 0 28px rgba(255,255,255,.22));animation:reveal 1.8s ease-out both}
 @keyframes reveal{from{opacity:0;filter:blur(14px)}}
-.wm{font:italic 500 clamp(64px,13vw,128px)/1 var(--serif);letter-spacing:.02em;text-shadow:0 0 40px rgba(255,255,255,.3);animation:breathe 7s ease-in-out infinite}
-@keyframes breathe{50%{text-shadow:0 0 70px rgba(255,255,255,.55)}}
-.me{grid-column:1/9;grid-row:2/4;min-height:360px;display:flex;flex-direction:column;justify-content:space-between;padding:34px}
-.av{position:relative;width:124px;height:124px;flex:none}
-.avatar{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;overflow:hidden;font:italic 500 48px var(--serif);background:var(--glass2);box-shadow:0 0 0 2px var(--st),0 0 0 8px rgba(255,255,255,.05),0 10px 40px rgba(255,255,255,.1);transition:box-shadow .5s}
+.wm{font:italic 500 clamp(64px,13vw,128px)/1 var(--serif);text-shadow:0 0 40px rgba(255,255,255,.3)}
+/* Hero */
+.hero{grid-column:1/-1;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;padding:34px}
+.left{display:flex;flex-direction:column;justify-content:center;min-width:0}
+.me-h{font:italic 500 clamp(64px,9.5vw,112px)/.9 var(--nameFont);margin:0 0 14px;text-shadow:0 0 40px rgba(255,255,255,.25)}
+.nitro .me-h{background:linear-gradient(100deg,#fff 20%,#ff9bd2 45%,#9bb7ff 70%,#fff);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:-200% 0}}
+#bio{margin:0;color:#cfcfcb;font:italic 500 26px/1.25 var(--serif);max-width:28ch;min-height:2.5em}
+#bio.typing::after{content:'';display:inline-block;width:2px;height:1em;background:var(--ink);margin-left:3px;vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;color:var(--dim);font-size:13px}
+.meta span{padding:4px 11px;border-radius:99px;background:var(--glass);border:1px solid var(--edge)}
+.socials{display:flex;gap:10px;margin-top:24px}
+.socials a{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:var(--ink);background:var(--glass2);border:1px solid var(--edge);transition:background .2s,transform .2s}
+.socials a:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+/* Profil paneli */
+.panel{display:flex;flex-direction:column;gap:14px;padding:22px;border-radius:22px;background:rgba(0,0,0,.38);border:1px solid var(--edge)}
+.ph{display:flex;align-items:center;gap:16px}
+.av{position:relative;width:96px;height:96px;flex:none}
+.avatar{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;overflow:hidden;font:italic 500 40px var(--serif);background:var(--glass2);box-shadow:0 0 0 2px var(--st),0 0 0 7px rgba(255,255,255,.05);transition:box-shadow .5s}
 .avatar img{width:100%;height:100%;object-fit:cover}
 .deco{position:absolute;inset:-12%;width:124%;height:124%;pointer-events:none}
-.dot{position:absolute;right:2px;bottom:2px;width:24px;height:24px;border-radius:50%;background:var(--st);border:4px solid #111;transition:background .5s}
-.nameRow{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:26px 0 6px}
-.me h1{font:italic 500 clamp(56px,9vw,100px)/.9 var(--serif);margin:0;text-shadow:0 0 40px rgba(255,255,255,.25)}
-.nitro h1{background:linear-gradient(100deg,#fff 20%,#ff9bd2 45%,#9bb7ff 70%,#fff);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;animation:shine 6s linear infinite}
-@keyframes shine{to{background-position:-200% 0}}
-.badges{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.dot{position:absolute;right:0;bottom:0;width:22px;height:22px;border-radius:50%;background:var(--st);border:4px solid #111;transition:background .5s}
+.who{min-width:0}.who b{display:block;font-size:20px}.who small{color:var(--dim);font-size:14px}
+.st{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;margin-top:4px}
+.sdot{width:9px;height:9px;border-radius:50%;background:var(--st);box-shadow:0 0 10px var(--st)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .bd{position:relative;width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:18px;background:color-mix(in srgb,var(--c) 22%,transparent);border:1px solid color-mix(in srgb,var(--c) 55%,transparent);cursor:default;transition:transform .2s;animation:pop .5s backwards}
 .bd:hover{transform:translateY(-3px) scale(1.1)}
-.bd.nt{background:linear-gradient(135deg,#ff7ac6,#7a8bff);border-color:rgba(255,255,255,.5);box-shadow:0 0 18px rgba(150,130,255,.6)}
 @keyframes pop{from{transform:scale(0)}}
+.bd::after,.tile::after{content:attr(data-n);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translate(-50%,4px);padding:5px 10px;border-radius:9px;background:rgba(15,15,15,.95);border:1px solid var(--edge);font:500 12px var(--sans);white-space:nowrap;opacity:0;pointer-events:none;transition:.2s;z-index:3}
+.bd:hover::after,.tile:hover::after{opacity:1;transform:translate(-50%,0)}
 .pill{display:flex;gap:8px;align-items:center;padding:5px 10px;border-radius:12px;background:rgba(0,0,0,.45);border:1px solid var(--edge)}
 .pill img{width:22px;height:22px;object-fit:contain;transition:transform .2s}.pill img:hover{transform:scale(1.25)}
 .chip{display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid var(--edge);font:600 14px var(--sans)}.chip img{width:16px;height:16px}
-.bd::after,.tile::after{content:attr(data-n);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translate(-50%,4px);padding:5px 10px;border-radius:9px;background:rgba(15,15,15,.95);border:1px solid var(--edge);font:500 12px var(--sans);white-space:nowrap;opacity:0;pointer-events:none;transition:.2s;z-index:3}
-.bd:hover::after,.tile:hover::after{opacity:1;transform:translate(-50%,0)}
-.me p{margin:0;color:#cfcfcb;font:italic 500 24px/1.25 var(--serif);max-width:30ch;min-height:2.5em}
-#bio.typing::after{content:'';display:inline-block;width:2px;height:1em;background:var(--ink);margin-left:3px;vertical-align:-.15em;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;color:var(--dim);font-size:13px}
-.meta span{padding:4px 11px;border-radius:99px;background:var(--glass);border:1px solid var(--edge)}
-.socials{display:flex;gap:10px;margin-top:22px}
-.socials a{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:var(--ink);background:var(--glass2);border:1px solid var(--edge);transition:background .2s,transform .2s}
-.socials a:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
-.clock{grid-column:9/13;grid-row:2;text-align:center;display:flex;flex-direction:column;justify-content:center}
-.clock b{font:500 62px/1 var(--serif);font-variant-numeric:tabular-nums}
-.clock span{color:var(--dim);font-size:14px;margin-top:10px}
-.pres{grid-column:9/13;grid-row:3;display:flex;flex-direction:column;gap:12px;background:linear-gradient(120deg,rgba(255,255,255,.07),rgba(255,255,255,.03))}
-.st{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500}
-.sdot{width:9px;height:9px;border-radius:50%;background:var(--st);box-shadow:0 0 10px var(--st)}
-.cs{display:flex;align-items:center;gap:8px;color:#d9d9d5;font-size:15px;min-height:24px}
+.cs{display:flex;align-items:center;gap:8px;color:#d9d9d5;font-size:15px}.cs:empty{display:none}
 .cs img{width:22px;height:22px;object-fit:contain}
 .act{display:flex;gap:12px;align-items:center;padding:10px;border-radius:16px;background:var(--glass2)}
-.act img{width:56px;height:56px;border-radius:12px;object-fit:cover;flex:none}
+.act img{width:52px;height:52px;border-radius:12px;object-fit:cover;flex:none}
 .act div{min-width:0;flex:1}.act b,.act small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .act small{color:var(--dim);font-size:13px}
 .bar{height:4px;border-radius:4px;background:rgba(255,255,255,.14);margin-top:7px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:#1ed760}
+.clock{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-top:12px;border-top:1px solid var(--edge);color:var(--dim);font-size:13px}
+.clock b{font:500 30px/1 var(--serif);color:var(--ink);font-variant-numeric:tabular-nums}
+/* Momus */
+.momus{grid-column:1/-1;display:grid;grid-template-columns:1.2fr 1fr;gap:26px;align-items:center;padding:20px}
+.momus img{width:100%;height:auto;max-height:260px;object-fit:cover;border-radius:18px;border:1px solid var(--edge);display:block}
+.momus small{color:var(--dim);letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+.momus h2{font-size:48px;margin:6px 0 8px}.momus p{margin:0 0 20px;color:#cfcfcb}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:14px;background:var(--ink);color:#050505;font-weight:600;text-decoration:none;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
 .skills{grid-column:1/8}
 .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:10px}
 .tile{position:relative;aspect-ratio:1;border-radius:18px;background:var(--glass2);border:1px solid var(--edge);display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s}
 .tile:hover{transform:translateY(-3px);background:rgba(255,255,255,.16)}.tile svg{width:36px;height:36px}
 .links{grid-column:8/13}
-.emo{grid-column:1/-1}
-.ewall{display:flex;flex-wrap:wrap;gap:10px}
-.e{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:30px;background:var(--glass2);border:1px solid var(--edge);cursor:pointer;transition:transform .2s;user-select:none}
-.e:hover{transform:translateY(-4px) rotate(-6deg) scale(1.12)}.e img{width:34px;height:34px}
 .gh{grid-column:1/-1}.gh #repos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px}.gh .row{margin:0}
 .row{display:flex;align-items:center;gap:14px;padding:12px 14px;margin-bottom:8px;border-radius:16px;background:var(--glass);border:1px solid transparent;color:inherit;text-decoration:none;transition:background .2s,border-color .2s}
 .row:last-child{margin-bottom:0}a.row:hover{background:var(--glass2);border-color:var(--edge)}
-a.row:focus-visible,.socials a:focus-visible{outline:2px solid #fff;outline-offset:2px}
+a.row:focus-visible,.socials a:focus-visible,.btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
 .row .ic{width:38px;height:38px;border-radius:11px;background:var(--glass2);display:grid;place-items:center;flex:none}
 .row div{flex:1;min-width:0}.row span{display:block;font-weight:500}.row small{color:var(--dim);font-size:13px}.row .go{opacity:.5;width:16px;height:16px}
 .marquee{overflow:hidden;max-width:1060px;margin:0 auto;padding:6px 0 34px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
@@ -101,32 +106,38 @@ a.row:focus-visible,.socials a:focus-visible{outline:2px solid #fff;outline-offs
 .snowbtn{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:var(--ink);background:rgba(20,20,20,.7);border:1px solid var(--edge);backdrop-filter:blur(14px);cursor:pointer;z-index:9}
 .snowbtn[aria-pressed=false]{opacity:.45}
 [hidden]{display:none!important}
-@media (prefers-reduced-motion:reduce){.mq,.wm,.orbs i,.card,.nitro h1,.bd{animation:none!important}}
-@media (max-width:900px){main>*{grid-column:1/-1!important;grid-row:auto!important}.me{min-height:0}}
+@media (prefers-reduced-motion:reduce){.mq,.orbs i,.card,.nitro .me-h,.bd,.banner img{animation:none!important}}
+@media (max-width:900px){main>*{grid-column:1/-1!important}.hero,.momus{grid-template-columns:1fr}.hero{padding:24px}#bio{max-width:none}}
 </style>
 </head>
 <body>
 <div class="glow" id="glow"></div><canvas id="dust" aria-hidden="true"></canvas><div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
 <main>
   <section class="card banner"><div class="wm" id="wm">Seyoria</div></section>
-  <section class="card me" id="meCard">
-    <div>
-      <div class="av"><div class="avatar" id="avatar"></div><img class="deco" id="deco" alt="" hidden><span class="dot" id="dot"></span></div>
-      <div class="nameRow"><h1 id="name"></h1><div class="badges" id="badges"></div></div>
+  <section class="card hero" id="meCard">
+    <div class="left">
+      <h1 class="me-h" id="name"></h1>
       <p id="bio"></p>
       <div class="meta" id="meta"></div>
+      <div class="socials" id="socials"></div>
     </div>
-    <div class="socials" id="socials"></div>
+    <div class="panel">
+      <div class="ph">
+        <div class="av"><div class="avatar" id="avatar"></div><img class="deco" id="deco" alt="" hidden><span class="dot" id="dot"></span></div>
+        <div class="who"><b id="dname">Seyoria</b><small>@seyoria_0</small><div class="st"><i class="sdot"></i><span id="dstatus">Bağlanıyor…</span></div></div>
+      </div>
+      <div class="badges" id="badges"></div>
+      <div class="cs" id="cs"></div>
+      <div class="act" id="act" hidden><img id="actImg" alt=""><div><b id="actT"></b><small id="actS"></small><div class="bar" id="actBar" hidden><i id="actFill"></i></div></div></div>
+      <div class="clock"><b id="time">--:--:--</b><span><span id="city"></span> · <span id="date"></span></span></div>
+    </div>
   </section>
-  <section class="card clock"><b id="time">--:--:--</b><span id="city"></span><span id="date"></span></section>
-  <section class="card pres">
-    <div class="st"><i class="sdot"></i><span id="dstatus">Bağlanıyor…</span></div>
-    <div class="cs" id="cs"></div>
-    <div class="act" id="act" hidden><img id="actImg" alt=""><div><b id="actT"></b><small id="actS"></small><div class="bar" id="actBar" hidden><i id="actFill"></i></div></div></div>
+  <section class="card momus">
+    <img src="momus-banner.gif" alt="Momus">
+    <div><small>Proje</small><h2>Momus</h2><p>Topluluk sitesi ve Discord botu.</p><a class="btn" href="https://seyoria.github.io/momus/" target="_blank" rel="noopener">Siteye git ↗</a></div>
   </section>
   <section class="card skills"><h2>Yetenekler</h2><div class="tiles" id="skills"></div></section>
   <section class="card links"><h2>Bağlantılar</h2><div id="links"></div></section>
-  <section class="card emo"><h2>Emojiler</h2><div class="ewall" id="ewall"></div></section>
   <section class="card gh" id="gh" hidden><h2>GitHub’da son işler</h2><div id="repos"></div></section>
 </main>
 <div class="marquee" aria-hidden="true"><div class="mq" id="mq"></div></div>
@@ -151,8 +162,6 @@ const ME = {
      Boş bırakırsan emoji rozetler çıkar. Örnek: [{n:"Quest", src:"https://cdn.discordapp.com/badge-icons/XXXX.png"}] */
   badgeImages: [],
   nitro: "auto",   // "auto" = animasyonlu avatar / avatar süsü / banner varsa Nitro say. true = her zaman göster. false = gizle.
-  /* Emoji duvarı: unicode yaz ya da Nitro/sunucu emojisi için {id:"EMOJİ_ID", animated:true} */
-  emojis: ["🗡️","🖤","✨","🌙","⚔️","💻","🔥","👁️"],
   skills: [["js","JavaScript"],["node","Node.js"],["html","HTML5"],["css","CSS3"],["git","Git"],["github","GitHub"],["bot","Discord bot"]],
   links: [
     {type:"discord", title:"Discord", note:"seyoria_0", url:"https://discord.com/users/1418943869554266122"},
@@ -195,7 +204,6 @@ setAvatar(ASSETS.avatar);
 ME.links.forEach(l=>{const a=document.createElement("a");a.href=l.url;a.target="_blank";a.rel="noopener";a.title=l.title;a.setAttribute("aria-label",l.title);a.innerHTML=ICON[l.type]||ICON.go;$("socials").appendChild(a);
  const r=document.createElement("a");r.className="row";r.href=l.url;r.target="_blank";r.rel="noopener";r.innerHTML=`<span class="ic">${ICON[l.type]||ICON.go}</span><div><span></span><small></small></div>${ICON.go}`;r.querySelector("div span").textContent=l.title;r.querySelector("small").textContent=l.note;$("links").appendChild(r)});
 ME.skills.forEach(([k,n])=>{const t=document.createElement("div");t.className="tile";t.dataset.n=n;t.setAttribute("aria-label",n);t.innerHTML=LOGO[k]||"";$("skills").appendChild(t)});
-ME.emojis.forEach(e=>{const d=document.createElement("div");d.className="e";d.innerHTML=emojiEl(typeof e==="string"?{name:e}:e);d.onclick=()=>toast(typeof e==="string"?e:":"+(e.name||"emoji")+":");$("ewall").appendChild(d)});
 
 /* ---- Saat ---- */
 function tick(){const o={timeZone:ME.timezone},d=new Date();let t,ds="",hr;try{t=d.toLocaleTimeString("tr-TR",{...o,hour12:false});ds=d.toLocaleDateString("tr-TR",{...o,weekday:"long",day:"numeric",month:"long"});hr=+d.toLocaleTimeString("en-GB",{...o,hour:"2-digit",hour12:false}).slice(0,2)}catch(e){t=d.toLocaleTimeString("tr-TR",{hour12:false});hr=d.getHours()}
@@ -212,7 +220,7 @@ function render(d){
   if(u.avatar){const an=u.avatar.startsWith("a_");setAvatar(`${CDN}avatars/${u.id}/${u.avatar}.${an?"gif":"png"}?size=256`)}
   const dec=u.avatar_decoration_data&&u.avatar_decoration_data.asset;
   $("deco").hidden=!dec;if(dec)$("deco").src=`${CDN}avatar-decoration-presets/${dec}.png?size=256`;
-  const dn=u.global_name||u.username;$("name").textContent=dn;
+  $("dname").textContent=u.global_name||u.username;
   /* rozetler */
   const fl=u.public_flags||0,bx=$("badges");bx.textContent="";
   const nitro=ME.nitro===true||(ME.nitro==="auto"&&(u.avatar&&u.avatar.startsWith("a_")||dec||u.banner||u.premium_type>0));
@@ -225,7 +233,7 @@ function render(d){
   $("meCard").classList.toggle("nitro",!!nitro);
   /* meta */
   const born=new Date(Number(BigInt(u.id)>>22n)+1420070400000),yrs=((Date.now()-born)/31557600000).toFixed(1).replace(".",",");
-  $("meta").innerHTML=`<span>@${u.username}</span><span>Discord’da ${yrs} yıl</span><span>Katılım: ${born.toLocaleDateString("tr-TR",{month:"long",year:"numeric"})}</span>`;
+  $("meta").innerHTML=`<span>Discord’da ${yrs} yıl</span><span>Katılım: ${born.toLocaleDateString("tr-TR",{month:"long",year:"numeric"})}</span>`;
   /* özel durum (Nitro emojisi destekli) */
   const cs=(d.activities||[]).find(a=>a.type===4);
   $("cs").innerHTML=cs?`${cs.emoji?emojiEl(cs.emoji,32):""}<span></span>`:"";if(cs)$("cs").lastChild.textContent=cs.state||"";
